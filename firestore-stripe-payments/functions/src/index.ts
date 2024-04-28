@@ -29,7 +29,7 @@ import * as logs from './logs';
 import config from './config';
 import { Timestamp } from 'firebase-admin/firestore';
 
-const apiVersion = '2022-11-15';
+const apiVersion = '2023-08-16';
 const stripe = new Stripe(config.stripeSecretKey, {
   apiVersion,
   // Register extension as a Stripe plugin
@@ -183,7 +183,7 @@ exports.createCheckoutSession = functions
         const sessionCreateParams: Stripe.Checkout.SessionCreateParams = {
           billing_address_collection,
           shipping_address_collection: { allowed_countries: shippingCountries },
-          shipping_rates,
+          // shipping_rates,
           customer,
           customer_update,
           line_items: line_items
